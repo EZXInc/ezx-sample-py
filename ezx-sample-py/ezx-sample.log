@@ -1,0 +1,307 @@
+2022-04-21 14:48:56,583 INFO: Thread-34764 root start  start(): starting client
+2022-04-21 14:48:56,583 DEBUG: Thread-34764 root _set_state  ApiClient.state=ClientState.INITIAL
+2022-04-21 14:48:56,583 INFO: Thread-34764 root start  ClientMonitor.start(): starting monitor thread
+2022-04-21 14:48:56,584 INFO: Thread-31148 root monitor  ClientMonitor.monitor(): starting connection monitor
+2022-04-21 14:48:56,584 INFO: Thread-31148 root _connect  start(): connecting to iServer...
+2022-04-21 14:48:56,738 INFO: Thread-31148 root connect  connected to 192.168.1.218:15000
+2022-04-21 14:48:56,739 DEBUG: Thread-31148 root _set_state  ApiClient.state=ClientState.CONNECTED
+2022-04-21 14:48:56,739 INFO: Thread-31148 root _connect  start(): connected
+2022-04-21 14:48:56,739 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:48:56,739 INFO: Thread-31148 root _sendLogin  sendLogin(): sending logon message now.
+2022-04-21 14:48:56,741 DEBUG: Thread-31148 root send_message  send_message(): sent msg=b'00004502100000\x01CONAM=FEIS\x01TYPE=10\x01PWD=igor\x01SEQ=0\x01UNAM=igor\x01\x03'
+2022-04-21 14:48:56,907 DEBUG: Thread-28356 root _recv  _recv(): got header. reading body of length=581
+2022-04-21 14:48:56,907 DEBUG: Thread-28356 root _recv  _recv(): processing msg type=2. bytes received=b'HDLI=2\x01ROID=5\x01SEQ=16\x01VER=2\x01SIDE=1\x01TIF=0\x01OQTY=100\x01PX=1.02\x01OTYP=2\x01ACCT=FEIS10\x01CLID=20220421-7\x01DEST=SIMU\x01MYID=1650536393698-2\x01SYM=AA\x01TXT=+B.1.a.4\x01CUMQ=50\x01EVT=EXEC\x01LVS=50\x01PENDREQ=REPL\x01STATE=PAFI\x01TS=2022-04-21 10:24:52\x01TOTEX=51.5\x01UNAM=igor\x01MSGORIGIN=1\x01BOID=20220421-2-O\x01TCUMQ=50\x01TTOTEX=51.5\x01B=EB\x01EVT=EXEC\x01EXTRANS=0\x01EXTYP=2\x01OQTY=100\x01OTYP=2\x01ETIME=2022-04-21 10:24:52\x01VER=1\x01PX=1.03\x01LPX=1.03\x01LSHRS=50\x01EID=19\x01TXT=FILL\x01TTIME=20220421-10:24:52.703\x01LMKT=LMKT\x01IGEN=0\x01CLID=20220421-6\x01BOID=20220421-2-O\x01E=EB\x01B=ORSB\x01VER=1\x01REQSTATE=ACCEPTED\x01MYID=1650536393698-2\x01CLID=20220421-6\x01E=ORSB\x01UID=7\x01SSID=4\x01\x03'
+2022-04-21 14:48:56,907 DEBUG: Thread-28356 root _handle_message  _handle_message(): processing subtype=112, msg=HDLI=2ROID=5SEQ=16VER=2SIDE=1TIF=0OQTY=100PX=1.02OTYP=2ACCT=FEIS10CLID=20220421-7DEST=SIMUMYID=1650536393698-2SYM=AATXT=+B.1.a.4CUMQ=50EVT=EXECLVS=50PENDREQ=REPLSTATE=PAFITS=2022-04-21 10:24:52TOTEX=51.5UNAM=igorMSGORIGIN=1BOID=20220421-2-OTCUMQ=50TTOTEX=51.5B=EBEVT=EXECEXTRANS=0EXTYP=2OQTY=100OTYP=2ETIME=2022-04-21 10:24:52VER=1PX=1.03LPX=1.03LSHRS=50EID=19TXT=FILLTTIME=20220421-10:24:52.703LMKT=LMKTIGEN=0CLID=20220421-6BOID=20220421-2-OE=EBB=ORSBVER=1REQSTATE=ACCEPTEDMYID=1650536393698-2CLID=20220421-6E=ORSBUID=7SSID=4
+2022-04-21 14:48:56,907 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:48:56,907 DEBUG: Thread-28356 root _recv  _recv(): got header. reading body of length=567
+2022-04-21 14:48:56,908 DEBUG: Thread-28356 root _recv  _recv(): processing msg type=2. bytes received=b'HDLI=2\x01ROID=5\x01SEQ=23\x01VER=3\x01SIDE=1\x01TIF=0\x01OQTY=100\x01PX=1.03\x01OTYP=2\x01ACCT=FEIS10\x01CLID=20220421-8\x01DEST=SIMU\x01MYID=1650536393698-2\x01SYM=AA\x01TXT=+B.1.a.4\x01CUMQ=200\x01EVT=EXEC\x01LVS=-100\x01PENDREQ=REPL\x01STATE=OVRF\x01TS=2022-04-21 10:25:16\x01TOTEX=207.5\x01UNAM=igor\x01MSGORIGIN=1\x01BOID=20220421-2-O\x01TCUMQ=200\x01TTOTEX=207.5\x01B=EB\x01EVT=EXEC\x01EXTRANS=0\x01EXTYP=2\x01OQTY=200\x01OTYP=2\x01ETIME=2022-04-21 10:25:16\x01VER=1\x01PX=1.04\x01LPX=1.04\x01LSHRS=150\x01EID=22\x01TXT=FILL\x01TTIME=20220421-10:25:16.519\x01LMKT=LMKT\x01IGEN=0\x01CLID=20220421-7\x01BOID=20220421-2-O\x01E=EB\x01B=ORSB\x01VER=2\x01REQSTATE=ACCEPTED\x01CLID=20220421-7\x01E=ORSB\x01UID=7\x01SSID=4\x01\x03'
+2022-04-21 14:48:56,908 DEBUG: Thread-28356 root _handle_message  _handle_message(): processing subtype=112, msg=HDLI=2ROID=5SEQ=23VER=3SIDE=1TIF=0OQTY=100PX=1.03OTYP=2ACCT=FEIS10CLID=20220421-8DEST=SIMUMYID=1650536393698-2SYM=AATXT=+B.1.a.4CUMQ=200EVT=EXECLVS=-100PENDREQ=REPLSTATE=OVRFTS=2022-04-21 10:25:16TOTEX=207.5UNAM=igorMSGORIGIN=1BOID=20220421-2-OTCUMQ=200TTOTEX=207.5B=EBEVT=EXECEXTRANS=0EXTYP=2OQTY=200OTYP=2ETIME=2022-04-21 10:25:16VER=1PX=1.04LPX=1.04LSHRS=150EID=22TXT=FILLTTIME=20220421-10:25:16.519LMKT=LMKTIGEN=0CLID=20220421-7BOID=20220421-2-OE=EBB=ORSBVER=2REQSTATE=ACCEPTEDCLID=20220421-7E=ORSBUID=7SSID=4
+2022-04-21 14:48:56,908 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:48:56,908 DEBUG: Thread-28356 root _recv  _recv(): got header. reading body of length=126
+2022-04-21 14:48:56,908 DEBUG: Thread-28356 root _recv  _recv(): processing msg type=4. bytes received=b'DEST=F-FDLM\x01DEST=F-ARCA\x01DEST=F-BATS\x01DEST=F-NYSE\x01DEST=F-DARK\x01DEST=RTICK\x01DEST=F-HELM\x01DEST=SIMU\x01DEST=SIMU-ACK\x01RETC=0\x01HBSECS=600\x01\x03'
+2022-04-21 14:48:56,908 DEBUG: Thread-28356 root _handle_message  _handle_message(): processing subtype=110, msg=DEST=F-FDLMDEST=F-ARCADEST=F-BATSDEST=F-NYSEDEST=F-DARKDEST=RTICKDEST=F-HELMDEST=SIMUDEST=SIMU-ACKRETC=0HBSECS=600
+2022-04-21 14:48:56,908 DEBUG: Thread-28356 root _set_state  ApiClient.state=ClientState.LOGGED_IN
+2022-04-21 14:48:56,908 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:48:56,909 DEBUG: Thread-28356 root _recv  _recv(): got header. reading body of length=21
+2022-04-21 14:48:56,909 DEBUG: Thread-28356 root _recv  _recv(): processing msg type=2. bytes received=b'DEST=F-FDLM\x01DSTAT=1\x01\x03'
+2022-04-21 14:48:56,909 DEBUG: Thread-28356 root _handle_message  _handle_message(): processing subtype=127, msg=DEST=F-FDLMDSTAT=1
+2022-04-21 14:48:56,909 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:48:56,909 DEBUG: Thread-28356 root _recv  _recv(): got header. reading body of length=21
+2022-04-21 14:48:56,909 DEBUG: Thread-28356 root _recv  _recv(): processing msg type=2. bytes received=b'DEST=F-ARCA\x01DSTAT=1\x01\x03'
+2022-04-21 14:48:56,909 DEBUG: Thread-28356 root _handle_message  _handle_message(): processing subtype=127, msg=DEST=F-ARCADSTAT=1
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _recv  _recv(): got header. reading body of length=21
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _recv  _recv(): processing msg type=2. bytes received=b'DEST=F-BATS\x01DSTAT=1\x01\x03'
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _handle_message  _handle_message(): processing subtype=127, msg=DEST=F-BATSDSTAT=1
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _recv  _recv(): got header. reading body of length=21
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _recv  _recv(): processing msg type=2. bytes received=b'DEST=F-NYSE\x01DSTAT=1\x01\x03'
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _handle_message  _handle_message(): processing subtype=127, msg=DEST=F-NYSEDSTAT=1
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _recv  _recv(): got header. reading body of length=21
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _recv  _recv(): processing msg type=2. bytes received=b'DEST=F-DARK\x01DSTAT=1\x01\x03'
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _handle_message  _handle_message(): processing subtype=127, msg=DEST=F-DARKDSTAT=1
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _recv  _recv(): got header. reading body of length=20
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _recv  _recv(): processing msg type=2. bytes received=b'DEST=RTICK\x01DSTAT=1\x01\x03'
+2022-04-21 14:48:56,910 DEBUG: Thread-28356 root _handle_message  _handle_message(): processing subtype=127, msg=DEST=RTICKDSTAT=1
+2022-04-21 14:48:56,911 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:48:56,911 DEBUG: Thread-28356 root _recv  _recv(): got header. reading body of length=21
+2022-04-21 14:48:56,911 DEBUG: Thread-28356 root _recv  _recv(): processing msg type=2. bytes received=b'DEST=F-HELM\x01DSTAT=1\x01\x03'
+2022-04-21 14:48:56,911 DEBUG: Thread-28356 root _handle_message  _handle_message(): processing subtype=127, msg=DEST=F-HELMDSTAT=1
+2022-04-21 14:48:56,911 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:48:57,058 DEBUG: Thread-28356 root _recv  _recv(): got header. reading body of length=19
+2022-04-21 14:48:57,058 DEBUG: Thread-28356 root _recv  _recv(): processing msg type=2. bytes received=b'DEST=SIMU\x01DSTAT=1\x01\x03'
+2022-04-21 14:48:57,058 DEBUG: Thread-28356 root _handle_message  _handle_message(): processing subtype=127, msg=DEST=SIMUDSTAT=1
+2022-04-21 14:48:57,058 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:48:57,058 DEBUG: Thread-28356 root _recv  _recv(): got header. reading body of length=23
+2022-04-21 14:48:57,058 DEBUG: Thread-28356 root _recv  _recv(): processing msg type=2. bytes received=b'DEST=SIMU-ACK\x01DSTAT=1\x01\x03'
+2022-04-21 14:48:57,058 DEBUG: Thread-28356 root _handle_message  _handle_message(): processing subtype=127, msg=DEST=SIMU-ACKDSTAT=1
+2022-04-21 14:48:57,058 DEBUG: Thread-28356 root _recv  _recv(): waiting for message...
+2022-04-21 14:49:16,735 DEBUG: Thread-31148 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-21 14:49:31,735 DEBUG: Thread-31148 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-21 14:49:46,734 DEBUG: Thread-31148 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-21 14:49:57,195 DEBUG: Thread-34764 root _set_state  ApiClient.state=ClientState.STOPPED
+2022-04-21 14:49:57,242 INFO: Thread-34764 root stop  stop(): socket closed.
+2022-04-21 14:49:57,242 INFO: Thread-28356 root _recv  _recv(): socket was disconnected
+2022-04-21 14:49:57,287 INFO: Thread-34764 root stop  ClientMonitor.stop(): shutting down monitor
+2022-04-21 14:49:57,335 DEBUG: Thread-28356 root _recv  _recv(): no longer receiving messages.
+2022-04-21 14:49:57,366 INFO: Thread-31148 root monitor  ClientMonitor.monitor(): exiting
+2022-04-27 20:02:19,601 INFO: Thread-41312 root start  start(): starting client
+2022-04-27 20:02:19,612 DEBUG: Thread-41312 root _set_state  ApiClient.state=ClientState.INITIAL
+2022-04-27 20:02:19,613 INFO: Thread-41312 root start  ClientMonitor.start(): starting monitor thread
+2022-04-27 20:02:19,616 INFO: Thread-41164 root monitor  ClientMonitor.monitor(): starting connection monitor
+2022-04-27 20:02:19,616 INFO: Thread-41164 root _connect  start(): connecting to iServer...
+2022-04-27 20:02:20,268 INFO: Thread-41164 root connect  connected to eval.ezxinc.com:15000
+2022-04-27 20:02:20,269 DEBUG: Thread-41164 root _set_state  ApiClient.state=ClientState.CONNECTED
+2022-04-27 20:02:20,269 INFO: Thread-41164 root _connect  start(): connected
+2022-04-27 20:02:20,270 DEBUG: Thread-14512 root _recv  _recv(): waiting for message...
+2022-04-27 20:02:20,270 INFO: Thread-41164 root _sendLogin  sendLogin(): sending logon message now.
+2022-04-27 20:02:20,270 DEBUG: Thread-41164 root send_message  send_message(): sent msg=b'00005102100000\x01CONAM=EZX\x01TYPE=10\x01PWD=gnadan\x01SEQ=0\x01UNAM=user name\x01\x03'
+2022-04-27 20:02:20,425 DEBUG: Thread-14512 root _recv  _recv(): no longer receiving messages.
+2022-04-27 20:02:20,425 DEBUG: Thread-14512 root _set_state  ApiClient.state=ClientState.DISCONNECTED
+2022-04-27 20:02:25,281 INFO: Thread-41164 root _connect  start(): connecting to iServer...
+2022-04-27 20:02:25,445 INFO: Thread-41164 root connect  connected to eval.ezxinc.com:15000
+2022-04-27 20:02:25,446 DEBUG: Thread-41164 root _set_state  ApiClient.state=ClientState.CONNECTED
+2022-04-27 20:02:25,449 INFO: Thread-41164 root _connect  start(): connected
+2022-04-27 20:02:25,451 DEBUG: Thread-8096 root _recv  _recv(): waiting for message...
+2022-04-27 20:02:25,451 INFO: Thread-41164 root _sendLogin  sendLogin(): sending logon message now.
+2022-04-27 20:02:25,451 DEBUG: Thread-41164 root send_message  send_message(): sent msg=b'00005102100000\x01CONAM=EZX\x01TYPE=10\x01PWD=gnadan\x01SEQ=0\x01UNAM=user name\x01\x03'
+2022-04-27 20:02:25,615 DEBUG: Thread-8096 root _recv  _recv(): no longer receiving messages.
+2022-04-27 20:02:25,616 DEBUG: Thread-8096 root _set_state  ApiClient.state=ClientState.DISCONNECTED
+2022-04-27 20:02:30,467 INFO: Thread-41164 root _connect  start(): connecting to iServer...
+2022-04-27 20:02:30,611 INFO: Thread-41164 root connect  connected to eval.ezxinc.com:15000
+2022-04-27 20:02:30,612 DEBUG: Thread-41164 root _set_state  ApiClient.state=ClientState.CONNECTED
+2022-04-27 20:02:30,615 INFO: Thread-41164 root _connect  start(): connected
+2022-04-27 20:02:30,617 DEBUG: Thread-36984 root _recv  _recv(): waiting for message...
+2022-04-27 20:02:30,618 INFO: Thread-41164 root _sendLogin  sendLogin(): sending logon message now.
+2022-04-27 20:02:30,619 DEBUG: Thread-41164 root send_message  send_message(): sent msg=b'00005102100000\x01CONAM=EZX\x01TYPE=10\x01PWD=gnadan\x01SEQ=0\x01UNAM=user name\x01\x03'
+2022-04-27 20:02:30,772 DEBUG: Thread-36984 root _recv  _recv(): no longer receiving messages.
+2022-04-27 20:02:30,773 DEBUG: Thread-36984 root _set_state  ApiClient.state=ClientState.DISCONNECTED
+2022-04-27 20:02:35,621 INFO: Thread-41164 root _connect  start(): connecting to iServer...
+2022-04-27 20:02:35,771 INFO: Thread-41164 root connect  connected to eval.ezxinc.com:15000
+2022-04-27 20:02:35,771 DEBUG: Thread-41164 root _set_state  ApiClient.state=ClientState.CONNECTED
+2022-04-27 20:02:35,774 INFO: Thread-41164 root _connect  start(): connected
+2022-04-27 20:02:35,774 DEBUG: Thread-36108 root _recv  _recv(): waiting for message...
+2022-04-27 20:02:35,774 INFO: Thread-41164 root _sendLogin  sendLogin(): sending logon message now.
+2022-04-27 20:02:35,775 DEBUG: Thread-41164 root send_message  send_message(): sent msg=b'00005102100000\x01CONAM=EZX\x01TYPE=10\x01PWD=gnadan\x01SEQ=0\x01UNAM=user name\x01\x03'
+2022-04-27 20:02:35,924 DEBUG: Thread-36108 root _recv  _recv(): no longer receiving messages.
+2022-04-27 20:02:35,924 DEBUG: Thread-36108 root _set_state  ApiClient.state=ClientState.DISCONNECTED
+2022-04-27 20:02:40,776 INFO: Thread-41164 root _connect  start(): connecting to iServer...
+2022-04-27 20:02:40,928 INFO: Thread-41164 root connect  connected to eval.ezxinc.com:15000
+2022-04-27 20:02:40,928 DEBUG: Thread-41164 root _set_state  ApiClient.state=ClientState.CONNECTED
+2022-04-27 20:02:40,929 INFO: Thread-41164 root _connect  start(): connected
+2022-04-27 20:02:40,929 DEBUG: Thread-21304 root _recv  _recv(): waiting for message...
+2022-04-27 20:02:40,929 INFO: Thread-41164 root _sendLogin  sendLogin(): sending logon message now.
+2022-04-27 20:02:40,929 DEBUG: Thread-41164 root send_message  send_message(): sent msg=b'00005102100000\x01CONAM=EZX\x01TYPE=10\x01PWD=gnadan\x01SEQ=0\x01UNAM=user name\x01\x03'
+2022-04-27 20:02:41,080 DEBUG: Thread-21304 root _recv  _recv(): no longer receiving messages.
+2022-04-27 20:02:41,080 DEBUG: Thread-21304 root _set_state  ApiClient.state=ClientState.DISCONNECTED
+2022-04-27 20:02:45,932 INFO: Thread-41164 root _connect  start(): connecting to iServer...
+2022-04-27 20:02:46,084 INFO: Thread-41164 root connect  connected to eval.ezxinc.com:15000
+2022-04-27 20:02:46,084 DEBUG: Thread-41164 root _set_state  ApiClient.state=ClientState.CONNECTED
+2022-04-27 20:02:46,085 INFO: Thread-41164 root _connect  start(): connected
+2022-04-27 20:02:46,085 DEBUG: Thread-21284 root _recv  _recv(): waiting for message...
+2022-04-27 20:02:46,085 INFO: Thread-41164 root _sendLogin  sendLogin(): sending logon message now.
+2022-04-27 20:02:46,085 DEBUG: Thread-41164 root send_message  send_message(): sent msg=b'00005102100000\x01CONAM=EZX\x01TYPE=10\x01PWD=gnadan\x01SEQ=0\x01UNAM=user name\x01\x03'
+2022-04-27 20:02:46,240 DEBUG: Thread-21284 root _recv  _recv(): got header. reading body of length=38
+2022-04-27 20:02:46,240 DEBUG: Thread-21284 root _recv  _recv(): processing msg type=4. bytes received=b'RETC=1\x01RETD=Invalid userid/password!\x01\x03'
+2022-04-27 20:02:46,241 DEBUG: Thread-21284 root _handle_message  _handle_message(): processing subtype=110, msg=RETC=1RETD=Invalid userid/password!
+2022-04-27 20:02:46,241 CRITICAL: Thread-21284 root handle_logon_response  handle_logon(): logon failed! returnCode=1, failure message=Invalid userid/password! 
+2022-04-27 20:02:46,241 CRITICAL: Thread-21284 root handle_logon_response  handle_logon(): stopping client. Please contact EZX support!
+2022-04-27 20:02:46,241 DEBUG: Thread-21284 root _set_state  ApiClient.state=ClientState.LOGON_FAILURE
+2022-04-27 20:02:46,242 DEBUG: Thread-21284 root _set_state  ApiClient.state=ClientState.STOPPED
+2022-04-27 20:02:46,242 INFO: Thread-21284 root stop  stop(): socket closed.
+2022-04-27 20:02:46,242 INFO: Thread-21284 root stop  ClientMonitor.stop(): shutting down monitor
+2022-04-27 20:02:46,242 DEBUG: Thread-21284 root _recv  _recv(): waiting for message...
+2022-04-27 20:02:46,243 ERROR: Thread-21284 root _recv  _recv(): error receiving message! ex=[WinError 10038] An operation was attempted on something that is not a socket
+2022-04-27 20:02:46,244 DEBUG: Thread-21284 root _recv  _recv(): no longer receiving messages.
+2022-04-27 20:06:28,915 INFO: Thread-40180 root start  start(): starting client
+2022-04-27 20:06:28,915 DEBUG: Thread-40180 root _set_state  ApiClient.state=ClientState.INITIAL
+2022-04-27 20:06:28,915 INFO: Thread-40180 root start  ClientMonitor.start(): starting monitor thread
+2022-04-27 20:06:28,916 INFO: Thread-14404 root monitor  ClientMonitor.monitor(): starting connection monitor
+2022-04-27 20:06:28,916 INFO: Thread-14404 root _connect  start(): connecting to iServer...
+2022-04-27 20:06:29,080 INFO: Thread-14404 root connect  connected to eval.ezxinc.com:15000
+2022-04-27 20:06:29,080 DEBUG: Thread-14404 root _set_state  ApiClient.state=ClientState.CONNECTED
+2022-04-27 20:06:29,081 INFO: Thread-14404 root _connect  start(): connected
+2022-04-27 20:06:29,082 DEBUG: Thread-38892 root _recv  _recv(): waiting for message...
+2022-04-27 20:06:29,082 INFO: Thread-14404 root _sendLogin  sendLogin(): sending logon message now.
+2022-04-27 20:06:29,082 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00004802100000\x01CONAM=EZX\x01TYPE=10\x01PWD=gnadan\x01SEQ=0\x01UNAM=gnadan\x01\x03'
+2022-04-27 20:06:29,266 DEBUG: Thread-38892 root _recv  _recv(): got header. reading body of length=257
+2022-04-27 20:06:29,266 DEBUG: Thread-38892 root _recv  _recv(): processing msg type=4. bytes received=b'DEST=SIMU\x01DEST=BLOOMBERG_UAT\x01DEST=TRADETECH_UAT\x01DEST=TRADETECH_UAT-CME\x01DEST=TO_FIX2API\x01DEST=TO_FIX2API1\x01DEST=MERRILL-SIMU\x01DEST=LOADBALANCE_TEST\x01DEST=TO_INBOUND1\x01DEST=ALLWEEK\x01DEST=Blaze\x01DEST=CURRENEX\x01DEST=TRADETECH_CERT\x01DEST=RAPTOR_TDUAT\x01RETC=0\x01HBSECS=1800\x01\x03'
+2022-04-27 20:06:29,267 DEBUG: Thread-38892 root _handle_message  _handle_message(): processing subtype=110, msg=DEST=SIMUDEST=BLOOMBERG_UATDEST=TRADETECH_UATDEST=TRADETECH_UAT-CMEDEST=TO_FIX2APIDEST=TO_FIX2API1DEST=MERRILL-SIMUDEST=LOADBALANCE_TESTDEST=TO_INBOUND1DEST=ALLWEEKDEST=BlazeDEST=CURRENEXDEST=TRADETECH_CERTDEST=RAPTOR_TDUATRETC=0HBSECS=1800
+2022-04-27 20:06:29,267 DEBUG: Thread-38892 root _set_state  ApiClient.state=ClientState.LOGGED_IN
+2022-04-27 20:06:29,268 DEBUG: Thread-38892 root _recv  _recv(): waiting for message...
+2022-04-27 20:06:49,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:07:04,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:07:19,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:07:34,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:07:49,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:08:04,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:08:19,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:08:34,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:08:49,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:09:04,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:09:19,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:09:34,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:09:49,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:10:04,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:10:19,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:10:34,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:10:49,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:11:04,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:11:19,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:11:34,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:11:49,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:12:04,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:12:19,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:12:34,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:12:49,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:13:04,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:13:19,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:13:34,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:13:49,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:14:04,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:14:19,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:14:34,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:14:49,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:15:04,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:15:19,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:15:34,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:15:49,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:16:04,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:16:19,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:16:24,636 DEBUG: Thread-38892 root _recv  _recv(): got header. reading body of length=22
+2022-04-27 20:16:24,683 DEBUG: Thread-38892 root _recv  _recv(): processing msg type=2. bytes received=b'DEST=ALLWEEK\x01DSTAT=1\x01\x03'
+2022-04-27 20:16:24,714 DEBUG: Thread-38892 root _handle_message  _handle_message(): processing subtype=127, msg=DEST=ALLWEEKDSTAT=1
+2022-04-27 20:16:24,776 DEBUG: Thread-38892 root _recv  _recv(): waiting for message...
+2022-04-27 20:16:34,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:16:49,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:17:04,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:17:19,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:17:34,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:17:49,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:18:04,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:18:19,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:18:34,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:18:49,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:19:04,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:19:19,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:19:34,093 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:19:49,094 DEBUG: Thread-14404 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-27 20:19:58,279 DEBUG: Thread-40180 root _set_state  ApiClient.state=ClientState.STOPPED
+2022-04-27 20:19:58,342 INFO: Thread-40180 root stop  stop(): socket closed.
+2022-04-27 20:19:58,342 INFO: Thread-38892 root _recv  _recv(): socket was disconnected
+2022-04-27 20:19:58,404 INFO: Thread-40180 root stop  ClientMonitor.stop(): shutting down monitor
+2022-04-27 20:19:58,419 DEBUG: Thread-38892 root _recv  _recv(): no longer receiving messages.
+2022-04-27 20:19:58,465 INFO: Thread-14404 root monitor  ClientMonitor.monitor(): exiting
+2022-04-28 22:08:27,208 INFO: Thread-40840 root start  start(): starting client
+2022-04-28 22:08:27,208 DEBUG: Thread-40840 root _set_state  ApiClient.state=ClientState.INITIAL
+2022-04-28 22:08:27,208 INFO: Thread-40840 root start  ClientMonitor.start(): starting monitor thread
+2022-04-28 22:08:27,209 INFO: Thread-40268 root monitor  ClientMonitor.monitor(): starting connection monitor
+2022-04-28 22:08:27,209 INFO: Thread-40268 root _connect  start(): connecting to iServer...
+2022-04-28 22:08:27,209 ERROR: Thread-40268 root _connect  start(): failed to connect! ex=an integer is required (got type NoneType)
+2022-04-28 22:08:32,211 INFO: Thread-40268 root _connect  start(): connecting to iServer...
+2022-04-28 22:08:32,211 ERROR: Thread-40268 root _connect  start(): failed to connect! ex=an integer is required (got type NoneType)
+2022-04-28 22:08:37,214 INFO: Thread-40268 root _connect  start(): connecting to iServer...
+2022-04-28 22:08:37,214 ERROR: Thread-40268 root _connect  start(): failed to connect! ex=an integer is required (got type NoneType)
+2022-04-28 22:08:42,221 INFO: Thread-40268 root _connect  start(): connecting to iServer...
+2022-04-28 22:08:42,221 ERROR: Thread-40268 root _connect  start(): failed to connect! ex=an integer is required (got type NoneType)
+2022-04-28 22:08:47,224 INFO: Thread-40268 root _connect  start(): connecting to iServer...
+2022-04-28 22:08:47,224 ERROR: Thread-40268 root _connect  start(): failed to connect! ex=an integer is required (got type NoneType)
+2022-04-28 22:08:52,226 INFO: Thread-40268 root _connect  start(): connecting to iServer...
+2022-04-28 22:08:52,226 ERROR: Thread-40268 root _connect  start(): failed to connect! ex=an integer is required (got type NoneType)
+2022-04-28 22:08:57,231 INFO: Thread-40268 root _connect  start(): connecting to iServer...
+2022-04-28 22:09:19,282 INFO: Thread-34736 root start  start(): starting client
+2022-04-28 22:09:19,282 DEBUG: Thread-34736 root _set_state  ApiClient.state=ClientState.INITIAL
+2022-04-28 22:09:19,282 INFO: Thread-34736 root start  ClientMonitor.start(): starting monitor thread
+2022-04-28 22:09:19,283 INFO: Thread-14792 root monitor  ClientMonitor.monitor(): starting connection monitor
+2022-04-28 22:09:19,283 INFO: Thread-14792 root _connect  start(): connecting to iServer...
+2022-04-28 22:09:19,450 INFO: Thread-14792 root connect  connected to 192.168.1.218:15000
+2022-04-28 22:09:19,450 DEBUG: Thread-14792 root _set_state  ApiClient.state=ClientState.CONNECTED
+2022-04-28 22:09:19,450 INFO: Thread-14792 root _connect  start(): connected
+2022-04-28 22:09:19,451 DEBUG: Thread-38568 root _recv  _recv(): waiting for message...
+2022-04-28 22:09:19,451 INFO: Thread-14792 root _sendLogin  sendLogin(): sending logon message now.
+2022-04-28 22:09:19,451 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00004502100000\x01CONAM=FEIS\x01TYPE=10\x01PWD=igor\x01SEQ=0\x01UNAM=igor\x01\x03'
+2022-04-28 22:09:19,634 DEBUG: Thread-38568 root _recv  _recv(): got header. reading body of length=126
+2022-04-28 22:09:19,634 DEBUG: Thread-38568 root _recv  _recv(): processing msg type=4. bytes received=b'DEST=F-FDLM\x01DEST=F-ARCA\x01DEST=F-BATS\x01DEST=F-NYSE\x01DEST=F-DARK\x01DEST=RTICK\x01DEST=F-HELM\x01DEST=SIMU\x01DEST=SIMU-ACK\x01RETC=0\x01HBSECS=600\x01\x03'
+2022-04-28 22:09:19,634 DEBUG: Thread-38568 root _handle_message  _handle_message(): processing subtype=110, msg=DEST=F-FDLMDEST=F-ARCADEST=F-BATSDEST=F-NYSEDEST=F-DARKDEST=RTICKDEST=F-HELMDEST=SIMUDEST=SIMU-ACKRETC=0HBSECS=600
+2022-04-28 22:09:19,634 DEBUG: Thread-38568 root _set_state  ApiClient.state=ClientState.LOGGED_IN
+2022-04-28 22:09:19,635 DEBUG: Thread-38568 root _recv  _recv(): waiting for message...
+2022-04-28 22:09:39,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:09:54,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:10:09,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:10:12,209 DEBUG: Thread-38568 root _recv  _recv(): got header. reading body of length=1
+2022-04-28 22:10:12,257 DEBUG: Thread-38568 root _recv  _recv(): processing msg type=2. bytes received=b'\x03'
+2022-04-28 22:10:12,272 DEBUG: Thread-38568 root _handle_message  _handle_message(): processing subtype=122, msg=
+2022-04-28 22:10:12,334 DEBUG: Thread-38568 root _recv  _recv(): waiting for message...
+2022-04-28 22:10:24,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:10:39,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:10:54,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:11:09,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:11:24,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:11:39,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:11:54,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:12:09,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:12:24,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:12:39,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:12:54,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:13:09,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:13:24,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:13:39,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:13:54,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:14:09,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:14:24,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:14:39,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:14:54,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:15:09,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:15:24,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:15:39,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:15:54,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:16:09,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:16:24,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:16:39,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:16:54,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:17:09,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:17:24,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:17:39,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:17:54,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:18:09,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:18:24,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:18:39,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:18:54,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:19:09,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:19:24,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:19:39,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:19:54,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:20:09,438 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:20:12,203 DEBUG: Thread-38568 root _recv  _recv(): got header. reading body of length=1
+2022-04-28 22:20:12,251 DEBUG: Thread-38568 root _recv  _recv(): processing msg type=2. bytes received=b'\x03'
+2022-04-28 22:20:12,282 DEBUG: Thread-38568 root _handle_message  _handle_message(): processing subtype=122, msg=
+2022-04-28 22:20:12,343 DEBUG: Thread-38568 root _recv  _recv(): waiting for message...
+2022-04-28 22:20:24,439 DEBUG: Thread-14792 root send_message  send_message(): sent msg=b'00000102122000\x01\x03'
+2022-04-28 22:20:31,797 DEBUG: Thread-34736 root _set_state  ApiClient.state=ClientState.STOPPED
+2022-04-28 22:20:31,876 INFO: Thread-38568 root _recv  _recv(): socket was disconnected
+2022-04-28 22:20:31,876 INFO: Thread-34736 root stop  stop(): socket closed.
+2022-04-28 22:20:31,923 DEBUG: Thread-38568 root _recv  _recv(): no longer receiving messages.
+2022-04-28 22:20:31,955 INFO: Thread-34736 root stop  ClientMonitor.stop(): shutting down monitor
+2022-04-28 22:20:32,017 INFO: Thread-14792 root monitor  ClientMonitor.monitor(): exiting
