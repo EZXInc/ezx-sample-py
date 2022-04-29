@@ -8,7 +8,7 @@ import threading
 from iserver import util
 from iserver.enums import api
 from iserver.enums.api import IserverMsgSubType
-from iserver.enums.msgenums import MsgType, Side, OrdType
+from iserver.enums.msgenums import MsgType, Side, OrdType, CFICode
 from iserver.msgs.OrderRequest import OrderRequest
 from iserver.net import ApiClient, ConnectionInfo, ClientState
 from iserver.msgs.OrderResponse import OrderResponse
@@ -91,7 +91,22 @@ def send_new_order(side, symbol, qty, price, **kwargs):
         iserver.set_properties(order, kwargs)
         
     pending_orders[order.myID] = order
-    client.send_message(order)    
+    client.send_message(order)
+    
+def send_new_option(side, symbol, qty, price, expire_date, option_type, strike_price):
+    qty = int(qty)
+    price = float(price)
+    side = parse_side(side)
+    
+    order = NewOrder(symbol, side, qty, price, destination, util.next_id())
+    year_month, day = parse_expire_date(expire_date)
+    order.maturityMonthYear = year_month
+    order.maturityDay = day
+    order.cfiCode = parse_option_type(option_type)
+    order.strikePx = strike_price
+    
+    client.send_message(order)
+        
     
 def cancel(routerOrderID : int):
     client.send_message(CancelOrder(routerOrderID))    
@@ -115,6 +130,19 @@ def parse_side(sideName: str) -> int:
     
     except KeyError:
         raise ValueError(f'invalid side specified! allowed=B, S, SS, was {sideName}')
+
+def parse_expire_date(expire_date):
+    if len(expire_date) < 8:
+        raise ValueError(f'expire_date format=YYYYMMDD, value was=[{expire_date}]')    
+    return expire_date[0:6], int(expire_date[-2:])
+    
+def parse_option_type(option_type):    
+    if option_type.casefold() == 'Put'.casefold():
+        return CFICode.OPTION_PUT.value
+    if option_type.casefold() == 'Call'.casefold():
+        return CFICode.OPTION_CALL.value
+    
+    raise Exception(f'invalid option type [{option_type}]')
     
     
 def stop_client():

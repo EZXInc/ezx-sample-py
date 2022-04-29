@@ -10,6 +10,8 @@ import api_functions
 from iserver import util
 import iserver
 from iserver.net import ConnectionInfo
+import argparse
+from argparse import Namespace, ArgumentParser
 
 
 class ApiCommands(Cmd):
@@ -30,6 +32,14 @@ class ApiCommands(Cmd):
         print('additional order properties can be set by entering a comma separated list of name=value pairs.')
         print('syntax: new <side=B or S> <symbol> <qty> <price> [optional1=value1, optional2=value2]')
         print('example: S TSLA 1000 989.20 account=1,text=+B.1.a.4')
+        
+    
+    def do_option(self, args):
+        '''Send a new option order'''
+        parsed = parse_option_args(args)
+        if parsed:
+            api_functions.send_new_option(parsed.side, parsed.symbol, parsed.qty, parsed.price, parsed.expire_date, parsed.option_type, parsed.strike_price)
+        
         
         
     def do_cancel(self, args):
@@ -84,9 +94,62 @@ class ApiCommands(Cmd):
     do_quit = do_exit
     
     do_x = do_exit
+        
     
-def parse(args):
+def create_options_parser() -> ArgumentParser:
+    parser = argparse.ArgumentParser(prog='option')
+
+    
+    option_values = parser.add_argument_group('option values')
+    option_values.add_argument('-x', '--expire-date', type=str, help='expiration date in format YYYYMMDD', dest='expire_date')
+    option_values.add_argument('-s', '--strike-price', type=float, help='strike price', dest='strike_price')
+    option_values.add_argument('-t', '--option-type', type=str, help='option type (Put or Call)', dest='option_type')
+    
+    order_values = parser.add_argument_group('order values')
+    order_values.add_argument('side', type=str)
+    order_values.add_argument('symbol', type=str)
+    order_values.add_argument('qty', type=int)
+    order_values.add_argument('price', type=float)    
+    
+    # parser.exit = exit_override
+    def error_override2(message):
+        #parser.print_usage(sys.stderr)
+        raise argparse.ArgumentError(None, message)
+    
+    parser.error = error_override2
+    
+    return parser
+    
+    
+def parse(args: str) -> list:
     return tuple(args.split())
+
+
+
+def parse_option_args(args : str) -> Namespace:
+    option_parser = create_options_parser()    
+    args = parse(args)
+    try:
+        result = option_parser.parse_args(args)
+        validate_option_values(option_parser, result)
+        return result
+    except argparse.ArgumentError as e:
+        print(f'error: {e.message} \n', file=sys.stderr)
+        option_parser.print_help()
+
+def validate_option_values(parser: ArgumentParser, values : Namespace):    
+    ''' Check that there are valid values for all option fields, throws Exception otherwise '''
+    for action in parser._actions:
+        if not action.type:
+            continue
+        
+        dest = action.dest
+        try:
+            value = getattr(values, dest)
+            if not value:
+                raise ValueError(f'missing required value for {dest}')   
+        except:
+            raise ValueError(f'missing required value for {dest}')
 
 def start(connection : ConnectionInfo):
     api_functions.start_client(connection)
