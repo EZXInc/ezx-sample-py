@@ -8,7 +8,7 @@ import threading
 from iserver import util
 from iserver.enums import api
 from iserver.enums.api import IserverMsgSubType
-from iserver.enums.msgenums import MsgType, Side, OrdType, CFICode
+from iserver.enums.msgenums import MsgType, Side, OrdType, CFICode, SecType
 from iserver.msgs.OrderRequest import OrderRequest
 from iserver.net import ApiClient, ConnectionInfo, ClientState
 from iserver.msgs.OrderResponse import OrderResponse
@@ -104,7 +104,7 @@ def send_new_option(side, symbol, qty, price, expire_date, option_type, strike_p
     order.maturityDay = day
     order.cfiCode = parse_option_type(option_type)
     order.strikePx = strike_price
-    
+    order.securityType = SecType.OPTION.value
     client.send_message(order)
         
     
