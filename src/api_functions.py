@@ -93,7 +93,7 @@ def send_new_order(side, symbol, qty, price, **kwargs):
     pending_orders[order.myID] = order
     client.send_message(order)
     
-def send_new_option(side, symbol, qty, price, expire_date, option_type, strike_price):
+def send_new_option(side, symbol, qty, price, expire_date, option_type, strike_price, **kwargs):
     qty = int(qty)
     price = float(price)
     side = parse_side(side)
@@ -105,6 +105,10 @@ def send_new_option(side, symbol, qty, price, expire_date, option_type, strike_p
     order.cfiCode = parse_option_type(option_type)
     order.strikePx = strike_price
     order.securityType = SecType.OPTION.value
+    
+    if kwargs:
+        iserver.set_properties(order, kwargs)
+            
     client.send_message(order)
         
     
