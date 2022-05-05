@@ -41,7 +41,7 @@ class ApiCommands(Cmd):
             api_functions.send_new_option(parsed.side, parsed.symbol, parsed.qty, parsed.price, parsed.expire_date, parsed.option_type, parsed.strike_price)
         
     def help_option(self):
-        print('send a new Option order to the iserver.')
+        print('\nsend a new Option order to the iserver.')
         print('usage: option Side Symbol Qty Price -x Expiration -s StrikePrice -t Option Type')
         print('example: option S TSLA 10 5.20 -x 20220918 -s 899 -t Put ')
         print('\n')

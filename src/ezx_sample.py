@@ -23,12 +23,12 @@ logging.config.fileConfig(log_config)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("iserver logon details")
-    parser.add_argument('-s',help='server address', type=str, dest='host')
-    parser.add_argument('-p',help='port', type=int, dest='port')
-    parser.add_argument('-c', help='company', type=str, dest='company')
-    parser.add_argument('-u',help='user', type=str, dest='user')
-    parser.add_argument('-pw',help='password', type=str, dest='password')
+    parser = argparse.ArgumentParser("ezx_sample ")
+    parser.add_argument('-s',help='server address', type=str, dest='host', required=True)
+    parser.add_argument('-p',help='port', type=int, dest='port', required=True)
+    parser.add_argument('-c', help='company', type=str, dest='company', required=True)
+    parser.add_argument('-u',help='user', type=str, dest='user', required=True)
+    parser.add_argument('-pw',help='password', type=str, dest='password', required=True)
     args = parser.parse_args()
     print(args)
         
