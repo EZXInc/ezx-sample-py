@@ -4,7 +4,7 @@ Created on 10 Mar 2022
 @author: shalomshachne
 '''
 import threading
-
+import logging
 from iserver import util
 from iserver.enums import api
 from iserver.enums.api import IserverMsgSubType
@@ -37,8 +37,11 @@ def process_order_update(msg: OrderResponse):
         else:
             open_orders[msg.routerOrderID] = msg
             
+    except KeyError:
+        pass
+    
     except Exception as e:
-        print(f'error processing OrderResponse. ex={e}')
+        logging.exception(f'error processing OrderResponse. ex={e}')
         
 
 def process_reject(msg: Reject):
@@ -156,13 +159,13 @@ def stop_client():
     if client: client.stop()
 
     
-def start_client(connection_info: ConnectionInfo): 
-    global client
+def start_client(connection_info: ConnectionInfo):   
+    global client  
     client = ApiClient(connection_info, msg_handler, on_state_change)    
     with wait_for_connection:
-        print('starting ApiClient and waiting 10 seconds for connection...')
+        print('starting ApiClient and waiting 30 seconds for connection...')
         client.start()
-        wait_for_connection.wait(30)
+        wait_for_connection.wait(1200)
     if not client.is_loggedin():
         raise BaseException(f'unable to login to {connection_info}')    
     print('logged in, you can start sending orders')    
