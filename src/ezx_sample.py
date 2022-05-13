@@ -5,11 +5,12 @@ Created on 8 Mar 2022
 '''
 import argparse
 
-import api_shell
-from iserver.net import ConnectionInfo
 import os
 import logging.config
 import sys
+
+import api_shell
+from iserver.net import ConnectionInfo
 
 
 my_path = os.path.dirname(os.path.abspath(__file__))
@@ -18,11 +19,11 @@ if not os.path.exists(log_config):
     print(f'error: cannot find logging config at {log_config}')
     sys.exit(1)
 
-logging.config.fileConfig(log_config)
-
+logging.config.fileConfig(log_config, disable_existing_loggers=False)
 
 
 if __name__ == "__main__":
+    
     parser = argparse.ArgumentParser("ezx_sample ")
     parser.add_argument('-s',help='server address', type=str, dest='host', required=True)
     parser.add_argument('-p',help='port', type=int, dest='port', required=True)
@@ -32,6 +33,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     print(args)
         
+
     info = ConnectionInfo(**vars(args))
     print(f'info={info}')
     

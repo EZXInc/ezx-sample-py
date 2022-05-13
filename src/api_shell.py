@@ -7,7 +7,6 @@ from cmd import Cmd
 import sys
 
 import api_functions
-from iserver import util
 import iserver
 from iserver.net import ConnectionInfo
 import argparse
