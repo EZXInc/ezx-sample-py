@@ -27,14 +27,34 @@ class TestApiShell(unittest.TestCase):
         self.assertEqual(20.30, req.price, 'set correct price')
 
     def test_send_new_with_named_properties(self):
-        args = 'B BAC 100 20.30 account=EZXZXE1'
+        args = 'B BAC 100 20.30 account=EZXZXE1 text=+A.1.a.1'
         self.shell.do_new(args)
         req = self.client.first()
         self.assertEqual(100, req.orderQty, 'set correct qty')
         self.assertEqual(20.30, req.price, 'set correct price')
         self.assertEqual('EZXZXE1', req.account, 'set account')
+        self.assertEqual('+A.1.a.1', req.text, 'set account')
         
-    
+    def test_send_option_with_named_properties(self):
+        args = 'B IBM 150 3.68 -x 20220627 -s 999 -t Put  -p account=5CG05400 text=+B.1.a.4'
+        self.shell.do_option(args)
+        req = self.client.first()
+        self.assertEqual(150, req.orderQty, 'set correct qty')
+        self.assertEqual(3.68, req.price, 'set correct price')
+        self.assertEqual('5CG05400', req.account, 'set account')
+        self.assertEqual('+B.1.a.4', req.text, 'set account')
+        
+    def test_send_option_with_named_properties_and_args_after(self):
+        args = 'B IBM 150 3.68 -x 20220627 -s 999 -p account=5CG05400 text=+B.1.a.4 -t Put'
+        self.shell.do_option(args)
+        req = self.client.first()
+        self.assertEqual(150, req.orderQty, 'set correct qty')
+        self.assertEqual(3.68, req.price, 'set correct price')
+        self.assertEqual(CFICode.OPTION_PUT.value, req.cfiCode, 'correct cfi code')
+        self.assertEqual('5CG05400', req.account, 'set account')
+        self.assertEqual('+B.1.a.4', req.text, 'set account') 
+        
+          
     def test_parse_option_args(self):
         args = 'B BAC 100 20.30 -x 20220929 -s 11.21 -t Put'
         result = api_shell.parse_option_args(args);

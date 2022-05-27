@@ -27,31 +27,32 @@ class ApiCommands(Cmd):
         
     def help_new(self):
         print('send a new order to the iserver. Required arguments are Side, Symbol, Qty. If price is empty, it will be a market order.')
-        print('additional order properties can be set by entering a comma separated list of name=value pairs.')
-        print('syntax: new <side=B or S> <symbol> <qty> <price> [optional1=value1, optional2=value2]')
-        print('example: S TSLA 1000 989.20 account=1,text=+B.1.a.4')
+        print('additional order properties can be set by entering a list of name=value pairs separated by space.')
+        print('syntax: new <side=B or S> <symbol> <qty> <price> [optional1=value1 optional2=value2]')
+        print('example: S TSLA 1000 989.20 account=1 text=+B.1.a.4')
     
     def do_option(self, args):
 
         properties = {}
         parsed = parse_option_args(args)
         if parsed.properties:
-            properties = iserver.parse_to_dict(parsed.properties)
+            name_values = ','.join(parsed.properties)
+            properties = iserver.parse_to_dict(name_values, ',')
 
         if parsed:
             api_functions.send_new_option(parsed.side, parsed.symbol, parsed.qty, parsed.price, parsed.expire_date, parsed.option_type, parsed.strike_price, **properties)
         
     def help_option(self):
         print('\nsend a new Option order to the iserver.')
-        print('usage: option Side Symbol Qty Price -x Expiration -s StrikePrice -t Option Type [-p optional1=value1, optional2=value2]')
-        print('example: option S TSLA 10 5.20 -x 20220918 -s 899 -t Put -p account=MYACC,senderSubID=trader')
+        print('usage: option Side Symbol Qty Price -x Expiration -s StrikePrice -t Option Type [-p optional1=value1 optional2=value2]')
+        print('example: option S TSLA 10 5.20 -x 20220918 -s 899 -t Put -p account=MYACC senderSubID=trader')
         print('\n')
         print('required Option arguments:')
         print('-x --expire-date Expiration Date (YYYYMMDD)')
         print('-s --strike-price Strike Price')
         print('-t --option-type Option Type (Put or Call)')
         print('\noptional order values:')
-        print('-p --properties name1=value1,name2=value2 (comma separated list of name/value pairs')
+        print('-p --properties name1=value1 name2=value2 (list of name/value pairs separated by space)')
         
     def do_cancel(self, args):
         'Cancel an order:  cancel <roid>'
@@ -115,7 +116,7 @@ def create_options_parser() -> ArgumentParser:
     order_values.add_argument('symbol', type=str)
     order_values.add_argument('qty', type=int)
     order_values.add_argument('price', type=float)    
-    order_values.add_argument('-p', '--properties', type=str, help="optional order properties to set", dest='properties')
+    order_values.add_argument('-p', '--properties', type=str, help="optional order properties to set", dest='properties', nargs = '+')
     
     # parser.exit = exit_override
     def error_override2(message):
