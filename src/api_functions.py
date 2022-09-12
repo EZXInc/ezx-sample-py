@@ -33,8 +33,10 @@ def process_order_update(msg: OrderResponse):
     try:
         if util.is_closed(msg):
             order = open_orders.pop(msg.routerOrderID)
+            # check for fills, update position here.
             print(f'removed closed order={order}')
         else:
+            # cache the order by order number.
             open_orders[msg.routerOrderID] = msg
             
     except KeyError:
@@ -57,10 +59,13 @@ def get_open_orders():
 def get_pending_order(myID : str) -> OrderRequest:
     return pending_orders.get(myID)
 
-
+# message handler function, implement business logic here, to handle
+# filled, cancelled or rejected orders.
 def msg_handler(msg_subtype, msg):
     print(f'\nreceived server response={msg}')
     try:
+        # we recommend switching
+        # from caching order by the string ID to using the numerical routerOrderID (assigned by the server).
         if msg.myID in pending_orders:
             pending_orders.pop(msg.myID)
     except AttributeError:
@@ -69,6 +74,9 @@ def msg_handler(msg_subtype, msg):
     if api.IserverMsgSubType.ORDERRESPONSE.value == msg_subtype:
         process_order_update(msg)
     elif api.IserverMsgSubType.REJECT.value == msg_subtype:
+        # if a NEW order request was rejected, it was dead, if REPL or CANC request is rejected. 
+        # Cancels are typically reject due to "cross-in-wire" - i.e. order fills at about the same time
+        # the Cancel request was sent.
         process_reject(msg)
     else:
         pass  # all we care about now
@@ -80,7 +88,6 @@ def on_state_change(state: ClientState):
         with wait_for_connection:            
             wait_for_connection.notify_all()
 
-
    
 
 def send_new_order(side, symbol, qty, price, **kwargs):
@@ -88,6 +95,9 @@ def send_new_order(side, symbol, qty, price, **kwargs):
     price = float(price)
     side = parse_side(side)
     
+    # note that we assign a unique ID to the order so we can link the server's OrderResponse
+    # to the order sent by the app. We recommend switching the ID to the server assigned routerOrderID
+    # once the first response is received.
     order = NewOrder(symbol, side, qty, price, destination, util.next_id())
     # set additional properties of the order
     if kwargs:
@@ -116,6 +126,7 @@ def send_new_option(side, symbol, qty, price, expire_date, option_type, strike_p
         
     
 def cancel(routerOrderID : int):
+    # to cancel an order only requires sending the Cancel request with the routerOrderID of the order to cancel.
     client.send_message(CancelOrder(routerOrderID))    
     
 def replace_order(routerOrderID, price, qty = None):
@@ -127,6 +138,8 @@ def replace_order(routerOrderID, price, qty = None):
     price = float(price)
     if qty:
         qty = int(qty)
+    # to send a replace, you only need to set routerOrderID and any fields
+    # that should be replaced. It isn't necessary to send values not being changed.
     client.send_message(ReplaceOrder(roid, price, qty))
     
     
