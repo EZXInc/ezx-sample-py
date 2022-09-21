@@ -3,25 +3,17 @@ Created on 10 Mar 2022
 
 @author: shalomshachne
 '''
-
-from Tools.scripts.nm2def import symbols
-from threading import _counter
 import unittest
 
-from pip._internal import req
-
 import api_functions
-from iserver import util
 import iserver
-from iserver.EzxMsg import EzxMsg
 from iserver.enums.msgenums import Side, OrdType, MsgType
 from iserver.msgs.OrderRequest import OrderRequest
 from iserver.msgs.OrderResponse import OrderResponse
-from iserver.net import ApiClient
+from iserver.msgs.Reject import Reject
 from tests import test_data_factory
 from tests.mocks import MockClient
-from tests.test_data_factory import *
-from iserver.msgs.Reject import Reject
+from tests.test_data_factory import random_symbol, random_quantity, random_price
 
 
 class ApiFunctionsTest(unittest.TestCase):
@@ -35,6 +27,7 @@ class ApiFunctionsTest(unittest.TestCase):
     def setUp(self):
         self.mock_client = MockClient()
         api_functions.client = self.mock_client
+        self.last_request = None
 
     def test_parse_side(self):
         expected = Side.BUY.value
@@ -50,10 +43,12 @@ class ApiFunctionsTest(unittest.TestCase):
         qty = random_quantity()
         price = random_price()
         side = 'S'
-        api_functions.send_new_order(side, symbol, qty, price)
+        order = api_functions.send_new_order(side, symbol, qty, price)
         
         req = self.mock_client.sent[0]
         self.assertIsInstance(req, OrderRequest, "sent an orderreqest")
+        self.assertEqual(order, req, "returned correct value")
+        
         field = 'symbol'
         self.assertEqual(symbol, req.symbol, field)
         self.assertEqual(qty, req.orderQty, 'qty')
@@ -63,6 +58,8 @@ class ApiFunctionsTest(unittest.TestCase):
         myId = req.myID
         self.assertIsNotNone(myId)
         self.assertEqual(req, api_functions.pending_orders.get(myId), 'cached pending order')
+        
+        self.last_request = order
         
     def test_send_new_sends_ordType(self):
         symbol = random_symbol()
@@ -101,6 +98,18 @@ class ApiFunctionsTest(unittest.TestCase):
         
         self.assertEqual(response, api_functions.open_orders.get(response.routerOrderID), 'cached response by orderID')
         self.assertIsNone(api_functions.pending_orders.get(req.myID), 'removed the pending order')
+        
+    def test_order_response_with_fill_updates_position(self):
+        self.test_send_new_sends_orderRequest()
+        req = next(iter(api_functions.pending_orders.values()))
+        response = test_data_factory.create_fill_response(req)
+                
+        api_functions.msg_handler(response.msg_subtype, response)
+        position = api_functions.positions[response.symbol]
+        self.assertIsNotNone(position)
+        
+        self.assertEqual(-response.orderQty, position.shares, "updated shares")
+        
         
     def test_kwargs(self):
         args = {'second': 2, 'third': 3}

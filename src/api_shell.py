@@ -76,6 +76,15 @@ class ApiCommands(Cmd):
             for order in api_functions.get_open_orders():
     
                 print(iserver.util.format_order(order))
+                
+    def do_position(self, args):
+        'position [symbol]\nshows the position for the specified symbol'
+        if not args:
+            print('error: no symbol specified')
+            return 
+        
+        print(api_functions.get_position(args))
+        
     
     def do_exit(self, inp):
         print('disconnecting from iserver')

@@ -8,13 +8,15 @@ import logging
 from iserver import util
 from iserver.enums import api
 from iserver.enums.api import IserverMsgSubType
-from iserver.enums.msgenums import MsgType, Side, OrdType, CFICode, SecType
+from iserver.enums.msgenums import MsgType, Side, OrdType, CFICode, SecType,\
+    Events
 from iserver.msgs.OrderRequest import OrderRequest
 from iserver.net import ApiClient, ConnectionInfo, ClientState
 from iserver.msgs.OrderResponse import OrderResponse
 from iserver.msgs.Reject import Reject
 import iserver
 from iserver.msgs.convenience_msgs import CancelOrder, NewOrder, ReplaceOrder
+import trading
 
 destination = 'SIMU'
 client: ApiClient = None
@@ -25,15 +27,19 @@ pending_orders = {}  # cache by myID to link back to first response to a new ord
 
 open_orders = {}  # cache by routerOrderID to find orders by id.
 
+positions = {}
+
 wait_for_connection = threading.Condition()
 
 
 def process_order_update(msg: OrderResponse):
     # do stuff like update position
     try:
+        if Events.EXEC.value == msg.event:
+            update_fill(msg)
+            
         if util.is_closed(msg):
-            order = open_orders.pop(msg.routerOrderID)
-            # check for fills, update position here.
+            order = open_orders.pop(msg.routerOrderID)    
             print(f'removed closed order={order}')
         else:
             # cache the order by order number.
@@ -44,7 +50,24 @@ def process_order_update(msg: OrderResponse):
     
     except Exception as e:
         logging.exception(f'error processing OrderResponse. ex={e}')
-        
+
+def update_fill(response : OrderResponse):
+    p = get_position(response.symbol)
+    try:
+        # only on Login will the response.executions contain more than 1 object.
+        # messages received "real-time" will only have 1 execution in the list.
+        for execution in response.executions:        
+            p.update(response.side, execution)
+            
+    except Exception as e:
+        logging.exception("update_fill: error updating fill: e=%s", e)
+    
+def get_position(symbol : str):
+    p = positions.get(symbol)
+    if not p:
+        p = trading.Position(symbol)
+        positions[symbol] = p            
+    return p      
 
 def process_reject(msg: Reject):
     pass  # deal with having a NEW, REPL or CANC rejected.
@@ -105,6 +128,7 @@ def send_new_order(side, symbol, qty, price, **kwargs):
         
     pending_orders[order.myID] = order
     client.send_message(order)
+    return order
     
 def send_new_option(side, symbol, qty, price, expire_date, option_type, strike_price, **kwargs):
     qty = int(qty)
