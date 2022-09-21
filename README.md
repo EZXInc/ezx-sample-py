@@ -29,7 +29,9 @@ To run the app (after installing dependencies):
 python ezx_sample.py -s <your server> -p <port> -c <your company> -u <user> -pw <password>  
 ```
 
-This will give you a command line interface which allows you to send new orders and to replace/cancel them.  To see the available commands, type:
+This will give you a command line interface which allows you to send new orders and to replace/cancel them.  If you don't see the command prompt (*$*) press &lt;Enter&gt;. (By default, the app is logging DEBUG messages to the console.  These can be turned off, see below.)
+
+To see the available commands, type:
 
 ```bash
 	help
