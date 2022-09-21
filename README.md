@@ -15,12 +15,15 @@ Install the EZX iServer API (ezx-pyapi).
 pip install ezx-pyapi
 ```
 
+Then clone this repository to get the sample app.
 
-#Running the Sample Application
 
-Contact [EZX](http://www.ezxinc.com/) to set up a demo account. This will give you a company, user and password to log into the server.
+# Running the Sample Application
 
-To run the app (after installing dependencies):
+Contact [EZX](http://www.ezxinc.com/) to set up a demo account. This will give you a company, user and password to log into the server.  **Note:** The python files are in the *src* directory, so either navigate to the folder, or set your *PYTHONPATH* to include the *src* directory.
+
+To run the app (after installing dependencies): 
+
 
 ```bash
 python ezx_sample.py -s <your server> -p <port> -c <your company> -u <user> -pw <password>  
