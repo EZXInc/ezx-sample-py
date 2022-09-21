@@ -37,7 +37,7 @@ For help with a specific command, type:
 	help <command>
 ```
 
-#### Logging
+## Logging
 
 Logging is controlled by the *logging.ini* file. 
 
