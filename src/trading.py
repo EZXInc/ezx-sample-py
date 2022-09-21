@@ -10,7 +10,10 @@ def sign(value : float):
     return 1 if value > 0 else 0 if value == 0 else -1
 
 class Position(object):
-    
+    '''
+    Lightweight position object to track shares filled, current position and average buy and sell price.  This is not a
+    full-blown implementation -- it is just a sample to show how to process fill data from the API.
+    '''
     def __init__(self, symbol : str = None, shares : int = 0, avg_price : float = 0.0):
         self.symbol : str = symbol
         self.shares : int = shares
