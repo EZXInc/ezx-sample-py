@@ -11,6 +11,16 @@ from iserver.enums.msgenums import Side, CFICode, SecType, MsgType
 class MultiLegOrder(OrderRequest):
 
     def __init__(self, price: float, quantity:float, destination=None, account=None):
+        '''
+         Construct new MultiLegOrder order. 
+         
+         Args:
+             price (float): price can be any value, including negative numbers
+             quantity (float): Buy or Sell
+             destination (str): where to route the order
+             account (str)
+         '''        
+        
         super().__init__()
         self.msgType = MsgType.NEW.value
         self.price = price
@@ -34,6 +44,14 @@ class MultiLegOrder(OrderRequest):
 class EquityLegOrder(OrderRequest):
 
     def __init__(self, symbol: str, side: Side, ratioQty):
+        '''
+         Construct new Option leg order. 
+         
+         Args:
+             symbol (str): root symbol
+             side (Side enum): Buy or Sell
+             ratioQty multiplier to apply to the orderQty specified in the parent order.
+         '''        
         super().__init__()
         self.securityType = SecType.COMMON_STOCK.value
         self.ratioQty = ratioQty
