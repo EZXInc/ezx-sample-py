@@ -98,5 +98,26 @@ The default message handler just prints the responses from the server.  You can 
 			
 ```
 
+##Convenience Module for Testing Interactively
+The above code is wrapped in the *interactive* module. To use: (you can type: `show_help()` at any point) 
+
+```python
+	
+	from interactive import *
+	from iserver.msgs.convenience_msgs import NewOrder
+	from iserver.enums.msgenums import Side
+	
+	client = connect('MyCompany','myUser','myPassword','eval.ezxinc.com')
+	status()
+	
+	order = NewOrder('IBM',Side.BUY.value,100, 89.30,'SIMU')
+	client.send_message(order)
+	
+	...
+	...
+	stop()
+	
+```
+
 Also see the [EZX API Quick Start Guide](https://docs.google.com/document/d/1VcAYjFDZfIbQCVmVN4CZ_U6d3O3dHbnFNuiIBec8L3M) for more details on the API.
 
