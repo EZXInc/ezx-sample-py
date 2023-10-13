@@ -7,10 +7,9 @@ from iserver.msgs.OrderRequest import OrderRequest
 from iserver.enums.msgenums import Side, CFICode, SecType, MsgType
 
 
-
 class MultiLegOrder(OrderRequest):
 
-    def __init__(self, price: float, quantity:float, destination=None, account=None):
+    def __init__(self, price: float, quantity:float, destination=None, account=None, **kwargs):
         '''
          Construct new MultiLegOrder order. 
          
@@ -21,7 +20,7 @@ class MultiLegOrder(OrderRequest):
              account (str)
          '''        
         
-        super().__init__()
+        super().__init__(**kwargs)
         self.msgType = MsgType.NEW.value
         self.price = price
         self.orderQty = quantity
@@ -43,7 +42,7 @@ class MultiLegOrder(OrderRequest):
         
 class EquityLegOrder(OrderRequest):
 
-    def __init__(self, symbol: str, side: Side, ratioQty):
+    def __init__(self, symbol: str, side: Side, ratioQty, **kwargs):
         '''
          Construct new Option leg order. 
          
@@ -52,17 +51,16 @@ class EquityLegOrder(OrderRequest):
              side (Side enum): Buy or Sell
              ratioQty multiplier to apply to the orderQty specified in the parent order.
          '''        
-        super().__init__()
+        super().__init__(**kwargs)
         self.securityType = SecType.COMMON_STOCK.value
         self.ratioQty = ratioQty
         self.side = side.value
         self.symbol = symbol
-       
 
 
 class OptionLegOrder(OrderRequest):
 
-    def __init__(self, symbol: str, side: Side, ratioQty, cfiCode: CFICode, strikePrice: float, maturityDate: str):
+    def __init__(self, symbol: str, side: Side, ratioQty, cfiCode: CFICode, strikePrice: float, maturityDate: str, **kwargs):
         '''
         Construct new Option leg order. 
         
@@ -74,7 +72,7 @@ class OptionLegOrder(OrderRequest):
             strikePrice (float): strike price of the option
             maturityDate (str) ANSI date YYYYMMDD       
         '''
-        super().__init__()
+        super().__init__(**kwargs)
         self.securityType = SecType.OPTION.value        
         self.ratioQty = ratioQty
         self.side = side.value
@@ -83,5 +81,4 @@ class OptionLegOrder(OrderRequest):
         self.strikePx = strikePrice
         self.maturityMonthYear = maturityDate[:6]
         self.maturityDay = int(maturityDate[6:])
-        
          

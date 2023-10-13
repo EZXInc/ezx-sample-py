@@ -148,9 +148,12 @@ Although the Multileg order is sent as a single message, the iServer responds wi
 OrderResponse messages for MultiLeg orders will have a *basketID* field which will contain the same value for all the orders belonging to the Multileg. This is useful for linking the separate responses to the MultiLeg order. OrderResponse messages for the leg orders will additionally have *refID* field set with a unique value (on this order) for each leg.
 
 ##Replaces
-To replace there are 2 options:
-- only send the portion of the which is changing as an *ReplaceOrder*. You only need to set values on field which are being replaced.
-- resend entire Multileg order with the changed values. In this case, make sure to set `request.msgType=MsgType.REPL.value` and also `request.routerOrderID=order.routerOrderID`
+Replaces follow the same pattern as replacing a regular order.  In general, only values on the *parent* order can be replaced (usually only price and orderQty). You only need to set the *routerOrderID*, *price* and/or *orderQty* on the replace request.  For example:
+
+```python
+	client.send_message(ReplaceOrder(orderID, price, qty)		
+```
+
 
 ##Cancels
 This is the same as canceling a standard order. Use the *CancelOrder* message as shown in the sample app.

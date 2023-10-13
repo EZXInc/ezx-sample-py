@@ -108,6 +108,26 @@ class Test(unittest.TestCase):
         self.assertTrue('SECTYPE=OPT' in msg)
         self.assertTrue('SECTYPE=CS' in msg)
         self.assertTrue('STRIKEPX' in msg)
+ 
+    def testMlegCtorWithKwargs(self):
+        userInfo = 'some information'
+        self.order = MultiLegOrder(-2.34, 5, DEFAULT_DESTINATION, DEFAULT_ACCOUNT, userInfo=userInfo, currency='USD')
+        self.assertEquals(userInfo, self.order.userInfo, 'set userInfo')
+        self.assertEquals('USD', self.order.currency, 'set userInfo')
+        
+    def testEquityLegWithKwargs(self):
+        exDest = 'NYSE'
+        lastPrice = 10.20
+        leg = EquityLegOrder('MSFT', Side.SELL, 3, exDest=exDest, lastPrice=lastPrice)
+        self.assertEquals(exDest, leg.exDest, 'set exDest')
+        self.assertEquals(lastPrice, leg.lastPrice, 'set lastPrice')
+        
+    def testOptionLegWithKwargs(self):
+        exDest = 'NYSE'
+        lastPrice = 10.20
+        leg = OptionLegOrder('MSFT', Side.SELL, 3, CFICode.OPTION_PUT, 10.20, '20240128',  exDest=exDest, lastPrice=lastPrice)
+        self.assertEquals(exDest, leg.exDest, 'set exDest')
+        self.assertEquals(lastPrice, leg.lastPrice, 'set lastPrice')        
         
 
 if __name__ == "__main__":

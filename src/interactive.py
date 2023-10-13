@@ -71,6 +71,6 @@ def show_help():
     print("----------------------------------------------------------------------------------------\n\n")
     
     
-print('\n\n\nWelcome to the iserver NYSE Badge Auth utility. This creates an iteractive connection to the iServer, and allows you to easily authorize and unauthorize badges.\n\n')
+print('\n\n\nThis creates an iteractive connection to the iServer, and allows you to interactively send orders.\n\n')
 show_help()
 
