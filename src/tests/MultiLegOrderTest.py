@@ -5,7 +5,7 @@ Created on 11 Oct 2023
 '''
 import unittest
 
-from iserver.enums.msgenums import Side, CFICode, MsgType
+from iserver.enums.msgenums import Side, CFICode, MsgType, OrdType
 from orders import MultiLegOrder, EquityLegOrder, OptionLegOrder
 from tests.test_data_factory import random_symbol, random_price, random_quantity
 from iserver import ezx_msg
@@ -35,7 +35,16 @@ class Test(unittest.TestCase):
         self.assertEquals(self.order.side, 1, "positive price sets side sell")                
 
         self.order = MultiLegOrder(.50, 5, DEFAULT_DESTINATION, DEFAULT_ACCOUNT)
-        self.assertEquals(self.order.side, 1, "positive price sets side sell")                
+        self.assertEquals(self.order.side, 1, "positive price sets side sell") 
+        
+    def testConstructorWithPriceSetsOrdTypeLimit(self):
+        self.order = MultiLegOrder(0, 5, DEFAULT_DESTINATION, DEFAULT_ACCOUNT)
+        self.assertEquals(OrdType.LIMIT, self.order.ordType, "set limit when price is set")
+        
+    def testConstructorNoPriceSetsOrdTypeMarket(self):
+        self.order = MultiLegOrder(None, 5, DEFAULT_DESTINATION, DEFAULT_ACCOUNT)
+        self.assertEquals(OrdType.MARKET, self.order.ordType, "set limit when price is set")        
+        
 
     def testDefaultValues(self): 
         order = self.order

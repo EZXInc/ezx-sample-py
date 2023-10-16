@@ -4,7 +4,7 @@ Created on 11 Oct 2023
 @author: shalomshachne
 '''
 from iserver.msgs.OrderRequest import OrderRequest
-from iserver.enums.msgenums import Side, CFICode, SecType, MsgType
+from iserver.enums.msgenums import Side, CFICode, SecType, MsgType, OrdType
 
 
 class MultiLegOrder(OrderRequest):
@@ -28,8 +28,21 @@ class MultiLegOrder(OrderRequest):
         self.account = account
         self.securityType = 'MLEG'
         self.symbol = 'NA'
-        side = Side.BUY if price >= 0 else Side.SELL
+        
+        # side doesn't get used anyway by the exchange, but it is required on the order message.
+        if self.price:
+            side = Side.BUY if self.price >= 0 else Side.SELL  # this is just a convention 
+        else:
+            side = Side.BUY # default 
+            
         self.side = side.value
+        
+        if self.price is None:
+            self.ordType = OrdType.MARKET
+        else:
+            self.ordType = OrdType.LIMIT
+            
+            
         
         self.legList = []
         
