@@ -38,9 +38,9 @@ class MultiLegOrder(OrderRequest):
         self.side = side.value
         
         if self.price is None:
-            self.ordType = OrdType.MARKET
+            self.ordType = OrdType.MARKET.value
         else:
-            self.ordType = OrdType.LIMIT
+            self.ordType = OrdType.LIMIT.value
             
             
         

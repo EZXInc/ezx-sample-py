@@ -6,7 +6,8 @@ FORMAT = '%(asctime)s %(levelname)s: Thread-%(thread)d %(name)s %(funcName)s  %(
 logging.basicConfig(level=logging.INFO, format=FORMAT, stream=sys.stdout, force=True)
 
 from iserver.net import ConnectionInfo, ApiClient
-from iserver.msgs import AdminCommand
+# make it easy to access these objects by importing here.
+from iserver.msgs.convenience_msgs import *
 from iserver.enums.msgenums import LogonType
 
 client = None

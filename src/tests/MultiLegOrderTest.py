@@ -39,11 +39,11 @@ class Test(unittest.TestCase):
         
     def testConstructorWithPriceSetsOrdTypeLimit(self):
         self.order = MultiLegOrder(0, 5, DEFAULT_DESTINATION, DEFAULT_ACCOUNT)
-        self.assertEquals(OrdType.LIMIT, self.order.ordType, "set limit when price is set")
+        self.assertEquals('2', self.order.ordType, "set limit when price is set")
         
     def testConstructorNoPriceSetsOrdTypeMarket(self):
         self.order = MultiLegOrder(None, 5, DEFAULT_DESTINATION, DEFAULT_ACCOUNT)
-        self.assertEquals(OrdType.MARKET, self.order.ordType, "set limit when price is set")        
+        self.assertEquals('1', self.order.ordType, "set limit when price is set")        
         
 
     def testDefaultValues(self): 
