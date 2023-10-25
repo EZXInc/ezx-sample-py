@@ -1,37 +1,61 @@
-﻿**********************
-Windows PowerShell transcript start
-Start time: 20231013120546
-Username: SSG-DESKTOP\shalomshachne
-RunAs User: SSG-DESKTOP\shalomshachne
-Configuration Name: 
-Machine: SSG-DESKTOP (Microsoft Windows NT 10.0.19045.0)
-Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-Process ID: 13644
-PSVersion: 5.1.19041.3570
-PSEdition: Desktop
-PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.3570
-BuildVersion: 10.0.19041.3570
-CLRVersion: 4.0.30319.42000
-WSManStackVersion: 3.0
-PSRemotingProtocolVersion: 2.3
-SerializationVersion: 1.1.0.1
-**********************
-Transcript started, output file is docs\interactive.txt
-PS D:\coding\dev\ezx-sample-py> set PYTHONPATH=src
-PS D:\coding\dev\ezx-sample-py> python
+﻿...\src> python
+
 Python 3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)] on win32
 Type "help", "copyright", "credits" or "license" for more information.
+
+
 >>> from interactive import *
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ModuleNotFoundError: No module named 'interactive'
+
+This creates an iteractive connection to the iServer, and allows you to interactively send orders.
+
+
+Available functions: (type help(function name) to see the parameters for the function.):
+----------------------------------------------------------------------------------------
+connect - Connect to the iserver.
+stop - Disconnect from the iserver.  You will need to call the connect method again to reconnect.
+status - Indicates connection status. if connected=True, then the client is logged in to the iserver.
+show_help - Displays information about available functions.
+----------------------------------------------------------------------------------------
+
+
+>>> client = connect('EROOM','test1','test1','eval.ezxinc.com')
+
+...
+iserver client started...
+...
+
+>>> status()
+iserver client connected=True. company=EROOM, user=test1
+
 >>> from orders import *
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ModuleNotFoundError: No module named 'orders'
+
+>>> mleg = MultiLegOrder(-1.23, 100, 'APEX1-SIMU', '5CG05400')
+
+>>> mleg.add_leg(EquityLegOrder('MSFT', Side.BUY, 2))
+
+>>> mleg.add_leg(OptionLegOrder('MSFT', Side.SELL, 3, CFICode.OPTION_PUT, 54.23, '20231126'))
+
+>>> client.send_message(mleg)
+
+>>> 2023-10-13 12:12:33,385 INFO: Thread-12052 iserver.net empty_msg_handler  received msg=routerOrderID=552,  ...
+
+>>> from iserver.msgs.convenience_msgs import ReplaceOrder, CancelOrder
+
+>>> client.send_message(ReplaceOrder(551, -1.24, 60))
+
+>>> 2023-10-13 12:14:49,253 INFO: Thread-12052 iserver.net empty_msg_handler  received msg=routerOrderID=552, seqNo=2685
+, version=2, side=1, timeInForce=0, orderQty=200.0, account=5CG05400, clientOrderID=EZX-20231011-176-LEG-1, customerOrFi
+rm=0, destination=APEX1-SIMU ...
+
+>>> client.send_message(CancelOrder(551))
+
+>>> 2023-10-13 12:15:15,160 INFO: Thread-12052 iserver.net empty_msg_handler  received msg=routerOrderID=552, seqNo=2696
+, version=3, side=1, timeInForce=0, orderQty=120.0, account=5CG05400, clientOrderID=EZX-20231011-177-LEG-1, customerOrFi
+rm=0, ...
+
+>>> stop()
+
+...
+
 >>> exit()
-PS D:\coding\dev\ezx-sample-py> Stop-Transcript
-**********************
-Windows PowerShell transcript end
-End time: 20231013120711
-**********************
+
