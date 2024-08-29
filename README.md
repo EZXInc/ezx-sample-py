@@ -6,16 +6,18 @@
 
 Sample Application to demonstrate how to use the EZX iServer API. This is a limited example showing how the EZX Python API is used to send orders and process the responses from the iServer and the Exchanges.
 
+Requires Python 3.8 or higher.
 
-# Dependencies and Installation
+Dependencies and Installation
 
-Install the EZX iServer API (ezx-pyapi).
+1. Clone this repository
 
+2. Install the EZX iServer API (ezx-pyapi):
 ```python
 pip install ezx-pyapi
 ```
 
-Then clone this repository to get the sample app.
+# run the sample app
 
 
 # Running the Sample Application
