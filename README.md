@@ -17,8 +17,6 @@ Dependencies and Installation
 pip install ezx-pyapi
 ```
 
-# run the sample app
-
 
 # Running the Sample Application
 
