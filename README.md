@@ -53,7 +53,7 @@ Logging is controlled by the *logging.ini* file.
 
 # Understanding the Sample Code
 
-The sample functions for interacting with the iServer API are in the api_functions.py module.  
+The sample functions for interacting with the iServer API are in the `api_functions.py` module.  
 
 
 
@@ -100,7 +100,7 @@ The default message handler just prints the responses from the server.  You can 
 			
 ```
 
-##Convenience Module for Testing Interactively
+## Convenience Module for Testing Interactively
 The above code is wrapped in the *interactive* module. To use: (you can type: `show_help()` at any point) 
 
 ```python
@@ -123,7 +123,7 @@ The above code is wrapped in the *interactive* module. To use: (you can type: `s
 
 Also see the [EZX API Quick Start Guide](https://docs.google.com/document/d/1VcAYjFDZfIbQCVmVN4CZ_U6d3O3dHbnFNuiIBec8L3M) for more details on the API.
 
-#MultiLeg Orders
+# MultiLeg Orders
 Sending MultiLeg orders is virtually the same as sending individual orders.  You create a "parent" OrderRequest object and then add to the OrderRequest.legList additional OrderRequest objects for each leg.
 
 On Multileg orders, price and quantity are set on the "parent" only. On each leg, you specify side, symbol, and ratio (multiplier for the parent quantity).  For Option legs, additionally specify the standard option parameters.
@@ -144,12 +144,12 @@ client.send_message(mleg)
 
 ```
 
-##Responses from the API
+## Responses from the API
 Although the Multileg order is sent as a single message, the iServer responds with separate OrderResponse messages for the parent and each leg. So for a 2-leg MultiLeg order, there will be 3 OrderResponses returned by the iServer. The iServer also calculates the *orderQty* for the leg OrderResponses (`ratioQty * parent.orderQty`).
 
 OrderResponse messages for MultiLeg orders will have a *basketID* field which will contain the same value for all the orders belonging to the Multileg. This is useful for linking the separate responses to the MultiLeg order. OrderResponse messages for the leg orders will additionally have *refID* field set with a unique value (on this order) for each leg.
 
-##Replaces
+## Replaces
 Replaces follow the same pattern as replacing a regular order.  In general, only values on the *parent* order can be replaced (usually only price and orderQty). You only need to set the *routerOrderID*, *price* and/or *orderQty* on the replace request.  For example:
 
 ```python
@@ -157,7 +157,7 @@ Replaces follow the same pattern as replacing a regular order.  In general, only
 ```
 
 
-##Cancels
+## Cancels
 This is the same as canceling a standard order. Use the *CancelOrder* message as shown in the sample app.
 
 
