@@ -1,4 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/ezx-pyapi.svg)](https://badge.fury.io/py/ezx-pyapi)
+[![PyPI version](https://img.shields.io/pypi/v/ezx-pyapi)](https://pypi.org/project/ezx-pyapi/)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ezx-pyapi)
 [![GitHub last commit](https://img.shields.io/github/last-commit/EZXInc/ezx-sample-py)](https://github.com/EZXInc/ezx-sample-py)
 
