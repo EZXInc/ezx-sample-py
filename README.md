@@ -6,6 +6,9 @@
 
 Sample Application to demonstrate how to use the EZX iServer API. This is a limited example showing how the EZX Python API is used to send orders and process the responses from the iServer and the Exchanges.
 
+📘 For detailed documentation of API messages, including advanced usage and message structure, see the [EZX Sample App Wiki](https://github.com/EZXInc/ezx-sample-py/wiki).
+
+
 Requires Python 3.8 or higher.
 
 Dependencies and Installation
@@ -58,12 +61,18 @@ The sample functions for interacting with the iServer API are in the `api_functi
 # EZX API Notes
 
 
-The iServer API is not really designed to be run interactively, although it is possible to do it, as shown below. 
+To test iServer API interactively, use the imports and functions below.
 
 
 ```python
 
 	from interactive import * #this creates an interactive connection to the iserver
+
+	client = connect('EROOM','test1','test1','eval.ezxinc.com')
+
+	...
+	iserver client started...
+	...
 	
 	
 	# send an order
@@ -158,9 +167,29 @@ This is the same as canceling a standard order. Use the *CancelOrder* message as
 ## SecurityDefinition Messages (CME)
 Users can send SecurityDefintionRequest messages to CME using the API. The message flow is much simpler than standard orders.  A request is sent and will either be accepted, or rejected.  If accepted, use the *securityID* value sent back on the response from the exchange.
 
-A sample interactive session which sends the requests and receives the responses is below.
+A sample interactive session which sends the requests and receives the responses is below.  Connect as shown above.  (If you only need the basic required fields, use the convenience messages as shown below.)   Otherwise use the `SecurityDefinitionRequesApi` message to set the expanded fields.
 
+```python
+from interactive import *
+from iserver.msgs.SecurityLegInfo import SecurityLegInfo
+from iserver.msgs.convenience_msgs import ComboSecurityDefinitionRequest
 
+# Create request
+req = ComboSecurityDefinitionRequest(
+    account="SIMU",
+    destination="CME_OPT",  # replace with your configured destination
+    legs=[
+        SecurityLegInfo(securityID="123456", side=1, ratioQty=1),
+        SecurityLegInfo(securityID="654321", side=2, ratioQty=1),
+    ]
+)
+
+client.send_message(req)
+
+```
+
+For a full explanation of the required fields and message behavior, see the
+📘 📄 [SecurityDefinitionRequest Api Notes (CME)](https://github.com/EZXInc/ezx-sample-py/wiki/SecurityDefinitionRequest)
 
 
 
