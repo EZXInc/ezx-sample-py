@@ -186,8 +186,8 @@ req = ComboSecurityDefinitionRequest(
     account="SIMU",
     destination="CME_AUTOCERT",  # replace with your configured destination
     legs=[
-        SecurityLegInfo(securityID="123456", side=1, ratioQty=1),
         SecurityLegInfo(securityID="654321", side=2, ratioQty=1),
+        SecurityLegInfo(securityID="123456", side=1, ratioQty=1),
     ]
 )
 
