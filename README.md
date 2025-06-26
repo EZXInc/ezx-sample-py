@@ -88,7 +88,9 @@ client = connect('EROOM', 'test1', 'test1', 'eval.ezxinc.com')
 
 # Send an order
 from iserver.msgs.convenience_msgs import *
-order = NewOrder('ZVZZT', 1, 100, 1.25, 'SIMU')
+from iserver.enums.msgenums import Side
+
+order = NewOrder('ZVZZT', Side.BUY.value, 100, 1.25, 'SIMU')
 client.send_message(order)
 ```
 
