@@ -84,7 +84,7 @@ You can use the API interactively by importing from `interactive.py`.
 from interactive import *
 
 # connect(company, user, password, host, [optional:port]
-client = connect('EROOM', 'test1', 'test1', 'eval.ezxinc.com')
+client = connect('ABCCOMPANY', 'test1', 'test1', 'eval.ezxinc.com')
 
 # Send an order
 from iserver.msgs.convenience_msgs import *
